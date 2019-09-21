@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.status(200).json('ok')
-})
+const { listAll } = require('../controllers')
+
+router
+    .get('/', (req, res) => listAll(req, res))
+    .get('/list/:version', (req, res) => listAll(req, res))
 
 module.exports = router
