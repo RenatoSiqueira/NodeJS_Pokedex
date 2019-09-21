@@ -8,7 +8,7 @@ const listAll = async (req, res) => {
         const reqResults = await request.get('pokemon?offset=0&limit=6')
 
         if (req.params.version === 'v1')
-            res.status(200).json(results.data)
+            res.status(200).json(reqResults.data)
         else {
             const { count, next, previous, results } = reqResults.data
             const newData = results.map(item => {
