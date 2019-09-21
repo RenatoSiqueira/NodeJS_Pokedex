@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+<body>
+    <% include partials/sidebar %>
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Listing All <%= count %> Pókemons</h1>
+
+                <section class="post">
+                    <header class="post-header">
+                        <h2 class="post-title">Photos from Pokemon.com</h2>
+                    </header>
+
+                    <div class="post-description">
+                        <div class="post-images pure-g">
+
+                            <% results.map( item => { %>
+
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <a href="<%= item.url %>">
+                                    <img alt="Photo of <%= item.name %>" class="pure-img-responsive"
+                                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/<%= item.id %>.png"
+                                        width="50%" height="50%">
+                                </a>
+
+                                <div class="post-image-meta">
+                                    <h3><%= item.name %></h3>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                        </div>
+                    </div>
+                </section>
+                <div class="pure-button-group" role="group" aria-label="...">
+                    <button class="pure-button">Next Page</button>
+                </div>
+            </div>
+            <% include partials/footer %>
