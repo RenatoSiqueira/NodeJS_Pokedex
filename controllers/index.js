@@ -3,21 +3,26 @@ const request = axios.create({ baseURL: 'https://pokeapi.co/api/v2/' })
 
 const errorMethod = (res, err) => res.status(404).json(err)
 
-const listAll = async (req, res) => {
-    try {
-        const reqResults = await request.get('pokemon?offset=0&limit=6')
+const addId = item => {
+    const id = item.url.match(/(\d{1,3})\/$/)[1]
+    item.id = id.length === 1 ? '00' + id : id.length === 2 ? '0' + id : id
+    return item
+}
 
+const listAll = async (req, res) => {
+    let { pag } = req.query
+    if (pag === undefined) { pag = 1 }
+    const querySearch = `pokemon?offset=${(pag - 1) * 6}&limit=6`
+    try {
+        const reqResults = await request.get(querySearch)
         if (req.params.version === 'v1')
             res.status(200).json(reqResults.data)
         else {
-            const { count, next, previous, results } = reqResults.data
-            const newData = results.map(item => {
-                const { url } = item
-                const id = url.slice(url.length - 2, url.length - 1)
-                item.id = id.length === 1 ? '00' + id : id.length === 2 ? '0' + id : id
-                return item
-            })
-            res.render('listAll', { count, next, previous, results: newData })
+            const { count, results } = reqResults.data
+            const newData = results.map(item => addId(item))
+            const nextPage = parseInt(pag) + 1
+            const prevPage = parseInt(pag) - 1
+            res.render('listAll', { count, nextPage, prevPage, results: newData })
         }
     } catch (err) {
         errorMethod(res, err)

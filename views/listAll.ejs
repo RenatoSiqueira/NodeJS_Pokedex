@@ -34,8 +34,11 @@
                         </div>
                     </div>
                 </section>
-                <div class="pure-button-group" role="group" aria-label="...">
-                    <button class="pure-button">Next Page</button>
+                <div class="pure-button-group" role="group">
+                    <% if(prevPage !== 0) { %>
+                    <a href="/list/v2?pag=<%= prevPage %>" class="pure-button">Previous Page</a>
+                    <% } %>
+                    <a href="/list/v2?pag=<%= nextPage %>" class="pure-button">Next Page</a>
                 </div>
             </div>
             <% include partials/footer %>
