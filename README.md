@@ -205,6 +205,6 @@ Dados Adicionais:
 > - Paginação em Web
 > - Proxima Pagina / Pagina Anterior (em Web)
 > - Testes
-> - Pipelines de CI/CD (GitLab, CircleCI, TravisCI)
+> - Pipelines de CI/CD (Codeship)
 > - Deploy em ambiente real (Heroku)
 > - Conteinerização da aplicação
