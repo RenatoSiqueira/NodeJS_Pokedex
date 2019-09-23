@@ -137,8 +137,8 @@ h3 {
     margin: 1em 0;
 }
 .post-image-meta {
-    margin-top: -3.5em;
-    margin-left: 1em;
+    margin-top: -2em;
+    margin-left: 2.3em;
     color: #333;
     text-shadow: 0 1px 1px rgb(61, 79, 93);
 }
@@ -175,4 +175,7 @@ h3 {
     .footer {
         text-align: center;
     }
+}
+.center {
+    text-align: center;
 }

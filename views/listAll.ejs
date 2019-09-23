@@ -18,7 +18,7 @@
 
                             <% results.map( item => { %>
 
-                            <div class="pure-u-1 pure-u-md-1-2">
+                            <div class="pure-u-1 pure-u-md-1-2 center">
                                 <a href="<%= item.url %>">
                                     <img alt="Photo of <%= item.name %>" class="pure-img-responsive"
                                         src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/<%= item.id %>.png"
@@ -26,7 +26,7 @@
                                 </a>
 
                                 <div class="post-image-meta">
-                                    <h3><%= item.name %></h3>
+                                    <h3><%= item.name.toUpperCase() %></h3>
                                 </div>
                             </div>
                             <% }) %>
