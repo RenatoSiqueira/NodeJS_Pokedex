@@ -18,3 +18,8 @@ Outra Url: https://pokeapi.co/api/v2/pokemon/
 > Swagger
 > Conteinerização da aplicação; 
 > Autenticação e autorização (JWT); 
+
+
+### Docker
+docker build -t backend-challenge .
+docker run -p 3000:3000 backend-challenge:latest
