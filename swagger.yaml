@@ -3,7 +3,7 @@ info:
   description: "This is a pokedex API."
   version: "1.0.0"
   title: "Pokedex Test"
-host: "https://nodejspokedex.herokuapp.com"
+host: "nodejspokedex.herokuapp.com"
 basePath: "/"
 tags:
 - name: "list"
