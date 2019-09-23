@@ -5,7 +5,8 @@ const errorMethod = (res, err) => res.status(404).json(err)
 
 const addId = item => {
     const id = item.url.match(/(\d{1,3})\/$/)[1]
-    item.id = id.length === 1 ? '00' + id : id.length === 2 ? '0' + id : id
+    item.id = id
+    item.cod = id.length === 1 ? '00' + id : id.length === 2 ? '0' + id : id
     return item
 }
 
@@ -41,6 +42,7 @@ const listOne = async (req, res) => {
             const newId = addId(species)
             const results = {
                 id: newId.id,
+                cod: newId.cod,
                 name: forms[0].name.toUpperCase(),
                 sprites,
                 abilities,
@@ -48,8 +50,8 @@ const listOne = async (req, res) => {
                 types,
                 stats
             }
-            const nextPage = parseInt(id) + 1
-            const prevPage = parseInt(id) - 1
+            const nextPage = parseInt(results.id) + 1
+            const prevPage = parseInt(results.id) - 1
             res.render('listOne', { nextPage, prevPage, results })
         }
     } catch (err) {
