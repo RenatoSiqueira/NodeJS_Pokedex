@@ -1,0 +1,230 @@
+swagger: "2.0"
+info:
+  description: "This is a pokedex API."
+  version: "1.0.0"
+  title: "Pokedex Test"
+host: "localhost:3000"
+basePath: "/"
+tags:
+- name: "list"
+  description: "All Pokemons List"
+- name: "pokemon"
+  description: "Detail of Pokemon selected"
+schemes:
+- "https"
+- "http"
+paths:
+  /list/v1:
+    get:
+      tags:
+      - "list"
+      summary: "Listing all Pokemons"
+      description: "List of first six pokemons \n If any param sended on `pag`, will be considered 1. \n All results items is limited to six."
+      operationId: "listPoke"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pag"
+        in: "query"
+        description: "Inform number of page to show."
+        type: "string"
+      responses:
+        404:
+          description: "Not found with error description"
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/List"
+  /pokemon/v1/{id}:
+    get:
+      tags:
+      - "pokemon"
+      summary: "Show all details of selected Pokemon"
+      description: ""
+      operationId: "listOnePoke"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID or NAME of Pokemon to return"
+        required: true
+        type: "string"
+      responses:
+        404:
+          description: "Not found with error description"
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/OneItem"
+definitions:
+  List:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+        format: "int64"
+      next:
+        type: "string"
+        example: "https://pokeapi.co/api/v2/pokemon?offset=12&limit=6"
+      previous:
+        type: "string"
+        example: "https://pokeapi.co/api/v2/pokemon?offset=6&limit=6"
+      results:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+            url:
+              type: "string"
+  OneItem:
+    type: "object"
+    properties:
+      abilities:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            ability:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                url:
+                  type: "string"
+            is_hidden:
+              type: "boolean"
+            slot:
+              type: "integer"
+      base_experience:
+        type: "integer"
+      forms:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+            url:
+              type: "string"
+      game_indices:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            game_index:
+              type: "integer"
+            version:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                url:
+                  type: "string"
+      heigth:
+        type: "integer"
+      held_items:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            item:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                url:
+                  type: "string"
+            version_details:
+              type: "array"
+              items:
+                type: "object"
+                properties:
+                  rarity: 
+                    type: "integer"
+                  version:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        name:
+                          type: "string"
+                        url:
+                          type: "string"
+      id:
+        type: "integer"
+      is_default:
+        type: "boolean"
+      location_area_encounters:
+        type: "string"
+      moves:
+        type: "integer"
+      name:
+        type: "string"
+      order:
+        type: "integer"
+      species:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+          url:
+            type: "string"
+      sprites:
+        type: "object"
+        properties:
+          back_default:
+            type: "string"
+          back_female:
+            type: "string"
+          back_shiny:
+            type: "string"
+          back_shiny_female:
+            type: "string"
+          front_default:
+            type: "string"
+          front_female:
+            type: "string"
+          front_shiny:
+            type: "string"
+          front_shiny_female:
+            type: "string"
+      stats:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            base_stat:
+              type: "integer"
+            effort:
+              type: "integer"
+            stat:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                url:
+                  type: "string"
+      types:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            slot:
+              type: "integer"
+            type:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                url:
+                  type: "string"
+              
+      weight:
+        type: "integer"
