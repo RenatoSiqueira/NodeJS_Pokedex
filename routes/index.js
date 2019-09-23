@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { listAll, listOne } = require('../controllers')
+const indexController = require('../controllers')
 
 router
-    .get('/', (req, res) => listAll(req, res))
-    .get('/list/:version', (req, res) => listAll(req, res))
-    .get('/pokemon/:version/:id', (req, res) => listOne(req, res))
+    .get('/', indexController.listAll)
+    .get('/list/:version', indexController.listAll)
+    .get('/pokemon/:version/:id', indexController.listOne)
 
 module.exports = router
