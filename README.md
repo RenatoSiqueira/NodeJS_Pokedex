@@ -7,13 +7,13 @@ Outra Url: https://pokeapi.co/api/v2/pokemon/
 ### Done
 > Listar pokemons em Json
 > Listar pokemons em Web
+> Detalhes do pokemon selecionado (foto, tipo(s), habilidades e movimentos)
+> Paginação
+> Proxima Pagina / Pagina Anterior
 > Pipelines de CI/CD (GitLab, CircleCI, TravisCI, etc); 
 > Deploy em ambiente real, utilizando serviços de cloud externos (Heroku); 
 
 ### TODO
-> Proxima Pagina
-> Paginação
-> Detalhes do pokemon selecionado (foto, tipo(s), habilidades e movimentos)
 > Tests
 > Swagger
 > Conteinerização da aplicação; 

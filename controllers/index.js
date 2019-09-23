@@ -29,6 +29,35 @@ const listAll = async (req, res) => {
     }
 }
 
+const listOne = async (req, res) => {
+    const { version, id } = req.params
+    const querySearch = `pokemon/${id}`
+    try {
+        const reqResults = await request.get(querySearch)
+        if (version === 'v1')
+            res.status(200).json(reqResults.data)
+        else {
+            const { species, forms, sprites, abilities, moves, types, stats } = reqResults.data
+            const newId = addId(species)
+            const results = {
+                id: newId.id,
+                name: forms[0].name.toUpperCase(),
+                sprites,
+                abilities,
+                moves,
+                types,
+                stats
+            }
+            const nextPage = parseInt(id) + 1
+            const prevPage = parseInt(id) - 1
+            res.render('listOne', { nextPage, prevPage, results })
+        }
+    } catch (err) {
+        errorMethod(res, err)
+    }
+}
+
 module.exports = {
-    listAll
+    listAll,
+    listOne
 }
