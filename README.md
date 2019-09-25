@@ -1,4 +1,5 @@
 # NodeJS_Pokedex
+[![Codeship Status for RenatoSiqueira/NodeJS_Pokedex](https://app.codeship.com/projects/a81ef7d0-c074-0137-3631-424e917e6618/status?branch=master)](https://app.codeship.com/projects/365892)
 
 - [NodeJS_Pokedex](#NodeJS_Pokedex)
     - [Objetivo](#objetivo)
